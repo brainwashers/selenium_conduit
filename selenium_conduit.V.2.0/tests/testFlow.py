@@ -19,7 +19,10 @@ class TestLoginFlow(TestCase):
         login_page.login_as_registered_user(USER)
 
         read_article = ReadArticle(self.driver)
-        read_article.open_existing_article()
+        read_article.open_existing_article(USER)
 
         edit_article = EditArticle(self.driver)
-        edit_article.edit_existing_article(USER['text'])
+        edit_article.edit_existing_article(USER)
+
+        verify = EditArticle(self.driver)
+        verify.verify_edited_article(USER)
